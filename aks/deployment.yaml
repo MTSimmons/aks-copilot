@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-openai-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-openai-app
+  template:
+    metadata:
+      labels:
+        app: flask-openai-app
+    spec:
+      containers:
+      - name: flask-openai-app
+        image: mtsimmons/flask-openai-app:latest
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+            name: openai-secrets
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
