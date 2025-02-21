@@ -12,3 +12,5 @@ terraform/override.tf.json
 terraform/*_override.tf
 terraform/*_override.tf.json
 terraform/.terraform/modules/modules.json
+terraform/.terraform.tfstate.lock.info
+terraform/*.tfplan
