@@ -58,3 +58,11 @@ variable "default_node_count" {
     type        = number
     default     = 1
 }
+
+
+# Azure AD Group for AKS access
+
+variable "aks_admin_user_email_list" {
+    type    = list(string)
+    default = []
+}

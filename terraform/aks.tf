@@ -4,7 +4,7 @@ module "aks" {
 
     # Required
     name                = var.cluster_name
-    resource_group_name = var.resource_group_name
+    resource_group_name = azurerm_resource_group.rg.name
     location            = var.cluster_location
     default_node_pool = {
         name                = "default"
@@ -21,9 +21,13 @@ module "aks" {
         "network_policy": "azure"
     }
 
-    # identity = {
-    #     type = "SystemAssigned"
-    # }
+    managed_identities = {
+        system_assigned = true
+    }
+
+    azure_active_directory_role_based_access_control = {
+      admin_group_object_ids = [azuread_group.admin_group.object_id]
+    }
 
     # network_profile = {
     #     network_plugin    = "azure"
