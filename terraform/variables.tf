@@ -1,3 +1,27 @@
+# Variables for Azure provider
+variable "arm_client_id" {
+    type        = string
+    description = "The Client ID which should be used."
+}
+
+variable "arm_client_secret" {
+    type        = string
+    description = "The Client Secret which should be used."
+    sensitive   = true
+}
+
+variable "arm_subscription_id" {
+    type        = string
+    description = "The Subscription ID which should be used."
+}
+
+variable "arm_tenant_id" {
+    type        = string
+    description = "The Tenant ID which should be used."
+}
+
+
+
 # Variables for resource group
 variable "resource_group_name" {
     description = "Name of the resource group"
